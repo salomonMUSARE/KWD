@@ -7,6 +7,13 @@ require_once 'config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KigaliTech - Innovative Solutions for the Digital Age</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+    
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -119,13 +126,13 @@ require_once 'config.php';
                 <h3>Our Team</h3>
                 <div class="team-grid">
                     <div class="team-member">
-                        <img src="assets/images/team/musare.jpg" alt="Musare Salomon">
+                        <img src="images/profile pictures/salomon musare.jpg" alt="Musare Salomon">
                         <h4>Musare Salomon</h4>
                         <p>Lead Developer</p>
                         <p class="member-description">Full-stack developer with 5+ years of experience in web and mobile application development.</p>
                     </div>
                     <div class="team-member">
-                        <img src="assets/images/team/maxime.jpg" alt="Mucyo Maxime">
+                        <img src="images/profile pictures/mucyo maxime.jpg" alt="Mucyo Maxime">
                         <h4>Mucyo Maxime</h4>
                         <p>Creative Director</p>
                         <p class="member-description">UI/UX specialist with a background in graphic design and front-end development.</p>
@@ -141,7 +148,7 @@ require_once 'config.php';
             <h2>Our Portfolio</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <img src="assets/images/portfolio/snap-salon.jpg" alt="Snap Salon">
+                    <img src="images/SNAP SALOON/OG OG.png" alt="Snap Salon">
                     <div class="portfolio-overlay">
                         <h3>Snap Salon</h3>
                         <p>Mobile App</p>
@@ -149,7 +156,7 @@ require_once 'config.php';
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="assets/images/portfolio/orgin-arts.jpg" alt="Orgin Arts">
+                    <img src="images/orgin art/OG OG.png" alt="Orgin Arts">
                     <div class="portfolio-overlay">
                         <h3>Orgin Arts</h3>
                         <p>Web Development</p>
@@ -157,7 +164,7 @@ require_once 'config.php';
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="assets/images/portfolio/live-for-others.jpg" alt="Live For Others">
+                    <img src="images/live for others/OG OG.png" alt="Live For Others">
                     <div class="portfolio-overlay">
                         <h3>Live For Others</h3>
                         <p>Nonprofit</p>
@@ -165,7 +172,7 @@ require_once 'config.php';
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="assets/images/portfolio/gold-profiter.jpg" alt="Gold Profiter">
+                    <img src="images/GOLD PROFITER/OG OG.jpg" alt="Gold Profiter">
                     <div class="portfolio-overlay">
                         <h3>Gold Profiter</h3>
                         <p>Finance</p>
@@ -173,7 +180,7 @@ require_once 'config.php';
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="assets/images/portfolio/vivid-drive.jpg" alt="Vivid Drive">
+                    <img src="images/vivid drive/OG OG.png" alt="Vivid Drive">
                     <div class="portfolio-overlay">
                         <h3>Vivid Drive</h3>
                         <p>Web Application</p>
@@ -181,7 +188,7 @@ require_once 'config.php';
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="assets/images/portfolio/kanda-tech.jpg" alt="Kanda Technologies">
+                    <img src="images/max website/OG OG.png" alt="Kanda Technologies">
                     <div class="portfolio-overlay">
                         <h3>Kanda Technologies</h3>
                         <p>Web Development</p>
@@ -198,29 +205,29 @@ require_once 'config.php';
             <h2>Get in Touch</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="info-item">
+                    <div class="info-item" onclick="window.location.href='tel:+250782768846'">
                         <i class="fas fa-phone"></i>
                         <h3>Phone</h3>
-                        <p><?php echo CONTACT_PHONE; ?></p>
+                        <p>+250 782 768 846</p>
                     </div>
-                    <div class="info-item">
+                    <div class="info-item" onclick="window.location.href='https://wa.me/250782768846?text=Hello%20Kigali%20website%20designers'">
                         <i class="fab fa-whatsapp"></i>
                         <h3>WhatsApp</h3>
                         <p>Chat with us</p>
                     </div>
-                    <div class="info-item">
+                    <div class="info-item" onclick="window.location.href='mailto:salmonmusare@gmail.com'">
                         <i class="fas fa-envelope"></i>
                         <h3>Email</h3>
-                        <p><?php echo CONTACT_EMAIL; ?></p>
+                        <p>salmonmusare@gmail.com</p>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <h3>Address</h3>
-                        <p><?php echo CONTACT_ADDRESS; ?></p>
+                        <p>Kigali Heights, KG 7 Ave, Kigali</p>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form action="includes/process_contact.php" method="POST">
+                    <form id="contactForm" action="includes/process_contact.php" method="POST">
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Name" required>
                         </div>
@@ -240,8 +247,38 @@ require_once 'config.php';
         </div>
     </section>
 
+    <!-- Contact Popup -->
+    <div class="contact-popup-overlay"></div>
+    <div class="contact-popup">
+        <h3>Get in Touch</h3>
+        <p>Choose your preferred way to contact us</p>
+        <div class="contact-popup-buttons">
+            <a href="tel:+250782768846" class="contact-popup-btn phone">
+                <i class="fas fa-phone"></i>
+                Call Us
+            </a>
+            <a href="https://wa.me/250782768846?text=Hello%20Kigali%20website%20designers" class="contact-popup-btn whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp
+            </a>
+            <a href="mailto:salmonmusare@gmail.com" class="contact-popup-btn email">
+                <i class="fas fa-envelope"></i>
+                Email
+            </a>
+        </div>
+    </div>
+
+    <!-- Form Success Message -->
+    <div class="form-success-overlay"></div>
+    <div class="form-success">
+        <i class="fas fa-check-circle" style="font-size: 48px; color: #25D366; margin-bottom: 1rem;"></i>
+        <h3>Thank You!</h3>
+        <p>Your message has been sent successfully. We'll get back to you soon.</p>
+    </div>
+
     <?php include 'includes/footer.php'; ?>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/gallery.js"></script>
 </body>
 </html> 

@@ -6,7 +6,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <div class="header-content">
             <div class="logo">
                 <a href="index.php">
-                    <img src="assets/images/logo.png" alt="KigaliTech Logo">
+                    <img src="images/logos/logo.png" alt="KigaliTech Logo">
                     <span>KigaliTech</span>
                 </a>
             </div>

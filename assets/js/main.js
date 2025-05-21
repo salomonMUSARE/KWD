@@ -53,10 +53,13 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScroll = currentScroll;
     });
 
-    // Form validation
-    const contactForm = document.querySelector('.contact-form form');
+    // Contact form handling
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.querySelector('.form-success');
+    const formSuccessOverlay = document.querySelector('.form-success-overlay');
+
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Basic form validation
@@ -74,9 +77,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Please enter a valid email address');
                 return;
             }
-            
-            // If validation passes, submit the form
-            this.submit();
+
+            try {
+                const formData = new FormData(this);
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Show success message
+                    formSuccess.classList.add('active');
+                    formSuccessOverlay.classList.add('active');
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formSuccess.classList.remove('active');
+                        formSuccessOverlay.classList.remove('active');
+                    }, 5000);
+                } else {
+                    alert(result.error || 'An error occurred. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    }
+
+    // Contact popup
+    const contactPopup = document.querySelector('.contact-popup');
+    const contactPopupOverlay = document.querySelector('.contact-popup-overlay');
+
+    // Show popup after 5 seconds
+    setTimeout(() => {
+        if (contactPopup && contactPopupOverlay) {
+            contactPopup.classList.add('active');
+            contactPopupOverlay.classList.add('active');
+        }
+    }, 5000);
+
+    // Close popup when clicking overlay
+    if (contactPopupOverlay) {
+        contactPopupOverlay.addEventListener('click', () => {
+            contactPopup.classList.remove('active');
+            contactPopupOverlay.classList.remove('active');
         });
     }
 
