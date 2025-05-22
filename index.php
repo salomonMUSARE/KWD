@@ -222,18 +222,25 @@ require_once 'config.php';
                 <div class="contact-form">
                     <form id="contactForm" action="includes/process_contact.php" method="POST">
                         <div class="form-group">
-                            <input type="text" name="name" placeholder="Name" required>
+                            <input type="text" name="name" id="name" placeholder=" " required>
+                            <label for="name">Your Name</label>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" placeholder="Email" required>
+                            <input type="email" name="email" id="email" placeholder=" " required>
+                            <label for="email">Your Email</label>
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="phone" placeholder="Phone Number" required>
+                            <input type="tel" name="phone" id="phone" placeholder=" " required>
+                            <label for="phone">Phone Number</label>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" placeholder="Message" required></textarea>
+                            <textarea name="message" id="message" placeholder=" " required></textarea>
+                            <label for="message">Your Message</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -264,9 +271,10 @@ require_once 'config.php';
     <!-- Form Success Message -->
     <div class="form-success-overlay"></div>
     <div class="form-success">
-        <i class="fas fa-check-circle" style="font-size: 48px; color: #25D366; margin-bottom: 1rem;"></i>
+        <i class="fas fa-check-circle"></i>
         <h3>Thank You!</h3>
         <p>Your message has been sent successfully. We'll get back to you soon.</p>
+        <button class="close-btn">Close</button>
     </div>
 
     <?php include 'includes/footer.php'; ?>

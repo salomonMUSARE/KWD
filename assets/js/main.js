@@ -57,56 +57,64 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.querySelector('.form-success');
     const formSuccessOverlay = document.querySelector('.form-success-overlay');
+    const closeBtn = document.querySelector('.form-success .close-btn');
 
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Basic form validation
-            const name = this.querySelector('input[name="name"]').value.trim();
-            const email = this.querySelector('input[name="email"]').value.trim();
-            const phone = this.querySelector('input[name="phone"]').value.trim();
-            const message = this.querySelector('textarea[name="message"]').value.trim();
-            
-            if (!name || !email || !phone || !message) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            if (!isValidEmail(email)) {
-                alert('Please enter a valid email address');
-                return;
-            }
 
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
             try {
+                // Disable submit button and show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+                // Get form data
                 const formData = new FormData(this);
+
+                // Send form data
                 const response = await fetch(this.action, {
                     method: 'POST',
                     body: formData
                 });
 
-                const result = await response.json();
+                const data = await response.json();
 
-                if (result.success) {
+                if (data.success) {
                     // Show success message
                     formSuccess.classList.add('active');
                     formSuccessOverlay.classList.add('active');
                     
                     // Reset form
                     this.reset();
-                    
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        formSuccess.classList.remove('active');
-                        formSuccessOverlay.classList.remove('active');
-                    }, 5000);
                 } else {
-                    alert(result.error || 'An error occurred. Please try again.');
+                    throw new Error(data.message || 'Something went wrong');
                 }
             } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again.');
+                alert(error.message || 'Failed to send message. Please try again.');
+            } finally {
+                // Reset submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
             }
+        });
+    }
+
+    // Close success message
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            formSuccess.classList.remove('active');
+            formSuccessOverlay.classList.remove('active');
+        });
+    }
+
+    // Close success message when clicking overlay
+    if (formSuccessOverlay) {
+        formSuccessOverlay.addEventListener('click', function() {
+            formSuccess.classList.remove('active');
+            this.classList.remove('active');
         });
     }
 

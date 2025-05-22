@@ -8,7 +8,7 @@ define('ADMIN_EMAIL', 'salmonmusare@gmail.com');
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'kigalitech_db');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'Business@me1'); 
 
 // Contact Information
 define('CONTACT_PHONE', '+250 782 768 846');
