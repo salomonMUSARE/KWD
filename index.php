@@ -40,39 +40,30 @@ require_once 'config.php';
         <div class="container">
             <div class="tech-slider">
                 <div class="tech-item">
-                    <img src="assets/images/tech/python.png" alt="Python">
                     <span>Python</span>
                 </div>
                 <div class="tech-item">
-                    <img src="assets/images/tech/react.png" alt="React.js">
                     <span>React.js</span>
                 </div>
                 <div class="tech-item">
-                    <img src="assets/images/tech/php.png" alt="PHP">
                     <span>PHP</span>
                 </div>
                 <div class="tech-item">
-                    <img src="assets/images/tech/html.png" alt="HTML">
-                    <span>HTML</span>
+                    <span>HTML5</span>
                 </div>
                 <div class="tech-item">
-                    <img src="assets/images/tech/node.png" alt="Node.js">
                     <span>Node.js</span>
                 </div>
                 <div class="tech-item">
-                    <img src="assets/images/tech/next.png" alt="Next.js">
                     <span>Next.js</span>
                 </div>
                 <div class="tech-item">
-                    <img src="assets/images/tech/wordpress.png" alt="WordPress">
                     <span>WordPress</span>
                 </div>
                 <div class="tech-item">
-                    <img src="assets/images/tech/java.png" alt="Java">
                     <span>Java</span>
                 </div>
                 <div class="tech-item">
-                    <img src="assets/images/tech/javascript.png" alt="JavaScript">
                     <span>JavaScript</span>
                 </div>
             </div>
