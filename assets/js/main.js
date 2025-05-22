@@ -195,8 +195,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (this.querySelector('h3')?.textContent === 'Kanda Technologies') {
                 const modal = document.createElement('div');
                 modal.className = 'portfolio-modal active';
+                modal.style.background = 'rgba(0, 0, 0, 0.95)';
                 modal.innerHTML = `
-                    <div class="modal-content">
+                    <div class="modal-content" style="max-width: 600px; margin: 50px auto;">
                         <div class="modal-title">Kanda Technologies</div>
                         <div class="close-modal">&times;</div>
                         <div style="text-align: center; padding: 2rem; color: white;">
@@ -234,6 +235,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentImageIndex = 0;
                 openGallery(galleryId);
             }
+        });
+    });
+
+    // Contact section click handlers
+    document.querySelectorAll('.contact-info .info-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const link = this.getAttribute('onclick');
+            if (link) {
+                // Extract the URL from the onclick attribute
+                const url = link.match(/window\.open\('([^']+)'/)[1];
+                window.open(url, '_blank');
+            }
+        });
+    });
+
+    // Contact popup buttons
+    document.querySelectorAll('.contact-popup-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = this.getAttribute('href');
+            window.open(url, '_blank');
         });
     });
 }); 
