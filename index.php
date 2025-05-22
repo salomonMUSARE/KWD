@@ -188,11 +188,13 @@ require_once 'config.php';
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="images/max website/OG OG.png" alt="Kanda Technologies">
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-overlay" style="opacity: 1; background: rgba(0, 0, 0, 0.9);">
                         <h3>Kanda Technologies</h3>
-                        <p>Web Development</p>
-                        <a href="#" class="btn btn-primary">View Website</a>
+                        <p>Insurance Technology Solutions</p>
+                        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <a href="https://kandaclaim.com/" target="_blank" class="btn btn-primary">Kanda Claim</a>
+                            <a href="https://kandatechnologies.com/" target="_blank" class="btn btn-primary">Kanda Tech</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -205,17 +207,17 @@ require_once 'config.php';
             <h2>Get in Touch</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="info-item" onclick="window.location.href='tel:+250782768846'">
+                    <div class="info-item" onclick="window.open('tel:+250782768846', '_blank')">
                         <i class="fas fa-phone"></i>
                         <h3>Phone</h3>
                         <p>+250 782 768 846</p>
                     </div>
-                    <div class="info-item" onclick="window.location.href='https://wa.me/250782768846?text=Hello%20Kigali%20website%20designers'">
+                    <div class="info-item" onclick="window.open('https://wa.me/250782768846?text=Hello%20Kigali%20website%20designers', '_blank')">
                         <i class="fab fa-whatsapp"></i>
                         <h3>WhatsApp</h3>
                         <p>Chat with us</p>
                     </div>
-                    <div class="info-item" onclick="window.location.href='mailto:salmonmusare@gmail.com'">
+                    <div class="info-item" onclick="window.open('mailto:salmonmusare@gmail.com', '_blank')">
                         <i class="fas fa-envelope"></i>
                         <h3>Email</h3>
                         <p>salmonmusare@gmail.com</p>
@@ -253,15 +255,15 @@ require_once 'config.php';
         <h3>Get in Touch</h3>
         <p>Choose your preferred way to contact us</p>
         <div class="contact-popup-buttons">
-            <a href="tel:+250782768846" class="contact-popup-btn phone">
+            <a href="tel:+250782768846" target="_blank" class="contact-popup-btn phone">
                 <i class="fas fa-phone"></i>
                 Call Us
             </a>
-            <a href="https://wa.me/250782768846?text=Hello%20Kigali%20website%20designers" class="contact-popup-btn whatsapp">
+            <a href="https://wa.me/250782768846?text=Hello%20Kigali%20website%20designers" target="_blank" class="contact-popup-btn whatsapp">
                 <i class="fab fa-whatsapp"></i>
                 WhatsApp
             </a>
-            <a href="mailto:salmonmusare@gmail.com" class="contact-popup-btn email">
+            <a href="mailto:salmonmusare@gmail.com" target="_blank" class="contact-popup-btn email">
                 <i class="fas fa-envelope"></i>
                 Email
             </a>

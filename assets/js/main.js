@@ -153,4 +153,87 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, 3000);
     }
+
+    // Portfolio Gallery
+    const galleryData = {
+        'orgin-arts': {
+            title: 'Orgin Arts Gallery',
+            images: [
+                'images/portfolio/orgin-arts/og-image.jpg',
+                'images/portfolio/orgin-arts/1.jpg',
+                'images/portfolio/orgin-arts/2.jpg',
+                'images/portfolio/orgin-arts/3.jpg'
+            ]
+        },
+        'gold-profiter': {
+            title: 'Gold Profiter Gallery',
+            images: [
+                'images/portfolio/gold-profiter/og-image.jpg',
+                'images/portfolio/gold-profiter/1.jpg',
+                'images/portfolio/gold-profiter/2.jpg',
+                'images/portfolio/gold-profiter/3.jpg'
+            ]
+        },
+        'vivid-drive': {
+            title: 'Vivid Drive Gallery',
+            images: [
+                'images/portfolio/vivid-drive/og-image.jpg',
+                'images/portfolio/vivid-drive/1.jpg',
+                'images/portfolio/vivid-drive/2.jpg',
+                'images/portfolio/vivid-drive/3.jpg'
+            ]
+        }
+    };
+
+    let currentGallery = null;
+    let currentImageIndex = 0;
+
+    // Open gallery modal
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+        item.addEventListener('click', function() {
+            // Special handling for Kanda Technologies
+            if (this.querySelector('h3')?.textContent === 'Kanda Technologies') {
+                const modal = document.createElement('div');
+                modal.className = 'portfolio-modal active';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="modal-title">Kanda Technologies</div>
+                        <div class="close-modal">&times;</div>
+                        <div style="text-align: center; padding: 2rem; color: white;">
+                            <h3 style="margin-bottom: 1rem;">Check out our insurance technology solutions!</h3>
+                            <p style="margin-bottom: 2rem;">Visit our websites to see how we're revolutionizing insurance in Rwanda.</p>
+                            <div style="display: flex; gap: 1rem; justify-content: center;">
+                                <a href="https://kandaclaim.com/" target="_blank" class="btn btn-primary">Visit Kanda Claim</a>
+                                <a href="https://kandatechnologies.com/" target="_blank" class="btn btn-primary">Visit Kanda Tech</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                document.body.style.overflow = 'hidden';
+
+                modal.querySelector('.close-modal').addEventListener('click', () => {
+                    modal.remove();
+                    document.body.style.overflow = '';
+                });
+
+                document.addEventListener('keydown', function closeOnEscape(e) {
+                    if (e.key === 'Escape') {
+                        modal.remove();
+                        document.body.style.overflow = '';
+                        document.removeEventListener('keydown', closeOnEscape);
+                    }
+                });
+                return;
+            }
+
+            // Regular gallery handling for other items
+            const galleryId = this.dataset.gallery;
+            if (galleryData[galleryId]) {
+                currentGallery = galleryId;
+                currentImageIndex = 0;
+                openGallery(galleryId);
+            }
+        });
+    });
 }); 
