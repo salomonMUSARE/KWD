@@ -1,0 +1,12 @@
+[23-May-2025 19:15:44 Africa/Kigali] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\Users\opc\Desktop\x\htdocs\kwpv6\includes\send_notifications.php on line 32
+[23-May-2025 19:15:44 Africa/Kigali] Failed to send email notification
+[23-May-2025 19:15:58 Africa/Kigali] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\Users\opc\Desktop\x\htdocs\kwpv6\includes\send_notifications.php on line 32
+[23-May-2025 19:15:58 Africa/Kigali] Failed to send email notification
+[23-May-2025 19:16:21 Africa/Kigali] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\Users\opc\Desktop\x\htdocs\kwpv6\includes\send_notifications.php on line 32
+[23-May-2025 19:16:21 Africa/Kigali] Failed to send email notification
+[23-May-2025 19:17:40 Africa/Kigali] Contact form error: Invalid request method
+[23-May-2025 19:17:40 Africa/Kigali] PHP Warning:  Undefined array key "HTTP_REFERER" in C:\Users\opc\Desktop\x\htdocs\kwpv6\includes\process_contact.php on line 117
+[23-May-2025 19:17:53 Africa/Kigali] Contact form error: Invalid request method
+[23-May-2025 19:17:53 Africa/Kigali] PHP Warning:  Undefined array key "HTTP_REFERER" in C:\Users\opc\Desktop\x\htdocs\kwpv6\includes\process_contact.php on line 117
+[23-May-2025 19:19:50 Africa/Kigali] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\Users\opc\Desktop\x\htdocs\kwpv6\includes\send_notifications.php on line 32
+[23-May-2025 19:19:50 Africa/Kigali] Failed to send email notification

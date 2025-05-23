@@ -400,14 +400,12 @@ require_once 'config.php';
         </div>
     </div>
 
-    <!-- Form Success Message -->
-    <div class="form-success-overlay"></div>
-    <div class="form-success">
-        <i class="fas fa-check-circle"></i>
-        <h3>Thank You!</h3>
-        <p>Your message has been sent successfully. We'll get back to you soon.</p>
-        <button class="close-btn">Close</button>
+    <!-- Form Success Message and Overlay -->
+    <div class="form-success" style="display:none;">
+        <span class="close-btn">&times;</span>
+        <p>Your message was sent successfully!</p>
     </div>
+    <div class="form-success-overlay" style="display:none;"></div>
 
     <script src="assets/js/main.js"></script>
     <script src="assets/js/gallery.js"></script>

@@ -126,25 +126,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Get form data
                 const formData = new FormData(this);
 
-                // Send form data
+                // Send form data using fetch with proper headers
                 const response = await fetch(this.action, {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
                 });
 
-                const data = await response.json();
+                // Check if response is JSON
+                const contentType = response.headers.get('content-type');
+                let data;
+                if (contentType && contentType.includes('application/json')) {
+                    data = await response.json();
+                } else {
+                    // Not JSON, get text for debugging
+                    const text = await response.text();
+                    console.error('Server returned non-JSON response:', text);
+                    throw new Error('Server error: ' + text);
+                }
 
                 if (data.success) {
-                    // Show success message
-                    formSuccess.classList.add('active');
-                    formSuccessOverlay.classList.add('active');
-                    
-                    // Reset form
+                    if (formSuccess && formSuccessOverlay) {
+                        formSuccess.classList.add('active');
+                        formSuccessOverlay.classList.add('active');
+                    }
                     this.reset();
                 } else {
                     throw new Error(data.message || 'Something went wrong');
                 }
             } catch (error) {
+                console.error('Form submission error:', error);
                 alert(error.message || 'Failed to send message. Please try again.');
             } finally {
                 // Reset submit button
