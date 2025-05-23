@@ -29,7 +29,11 @@ CREATE TABLE IF NOT EXISTS `contact_messages` (
   `status` enum('new','read','replied') NOT NULL DEFAULT 'new',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `email_notification_status` TINYINT DEFAULT 1 COMMENT '1 = Not sent, 2 = Sent',
   PRIMARY KEY (`id`),
   KEY `status` (`status`),
   KEY `created_at` (`created_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Update existing records to have status 2 (already sent)
+UPDATE contact_messages SET email_notification_status = 2 WHERE email_notification_status IS NULL; 

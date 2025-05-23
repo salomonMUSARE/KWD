@@ -1,12 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
+    // Mobile menu functionality
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
+    let mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    
+    // Create overlay if it doesn't exist
+    if (!mobileMenuOverlay) {
+        mobileMenuOverlay = document.createElement('div');
+        mobileMenuOverlay.className = 'mobile-menu-overlay';
+        document.body.appendChild(mobileMenuOverlay);
+    }
+    
+    function toggleMenu() {
+        mobileMenuToggle.classList.toggle('active');
+        mainNav.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+    }
     
     if (mobileMenuToggle && mainNav) {
-        mobileMenuToggle.addEventListener('click', function() {
-            mainNav.style.display = mainNav.style.display === 'block' ? 'none' : 'block';
-            this.classList.toggle('active');
+        // Toggle menu when clicking the button
+        mobileMenuToggle.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking overlay
+        mobileMenuOverlay.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking a link
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+        
+        // Close menu when pressing Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+                toggleMenu();
+            }
         });
     }
 
@@ -118,24 +150,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Contact popup
+    // Floating Contact Button and Popup
+    const floatingBtn = document.querySelector('.floating-contact-btn');
     const contactPopup = document.querySelector('.contact-popup');
-    const contactPopupOverlay = document.querySelector('.contact-popup-overlay');
+    const isHomePage = window.location.pathname.endsWith('index.php') || window.location.pathname.endsWith('/');
+    const isContactPage = window.location.pathname.includes('contact.php');
 
-    // Show popup after 5 seconds
-    setTimeout(() => {
-        if (contactPopup && contactPopupOverlay) {
-            contactPopup.classList.add('active');
-            contactPopupOverlay.classList.add('active');
-        }
-    }, 5000);
+    // Show popup on homepage after 5 seconds
+    if (isHomePage) {
+        setTimeout(() => {
+            if (contactPopup) {
+                contactPopup.classList.add('active');
+            }
+        }, 5000);
+    }
 
-    // Close popup when clicking overlay
-    if (contactPopupOverlay) {
-        contactPopupOverlay.addEventListener('click', () => {
-            contactPopup.classList.remove('active');
-            contactPopupOverlay.classList.remove('active');
+    // Toggle popup when clicking floating button
+    if (floatingBtn && contactPopup) {
+        floatingBtn.addEventListener('click', function() {
+            contactPopup.classList.toggle('active');
         });
+
+        // Close popup when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!contactPopup.contains(e.target) && !floatingBtn.contains(e.target)) {
+                contactPopup.classList.remove('active');
+            }
+        });
+    }
+
+    // Show popup on contact page after 5 seconds
+    if (isContactPage) {
+        setTimeout(() => {
+            if (contactPopup) {
+                contactPopup.classList.add('active');
+            }
+        }, 5000);
     }
 
     // Email validation helper
