@@ -1,42 +1,26 @@
 class PortfolioGallery {
     constructor() {
-        this.modal = null;
+        this.modal = document.querySelector('.portfolio-modal');
         this.currentIndex = 0;
         this.images = [];
         this.init();
     }
 
     init() {
-        // Create modal structure
-        this.createModal();
-        
         // Add click handlers to portfolio items
         document.querySelectorAll('.portfolio-item').forEach(item => {
             item.addEventListener('click', (e) => {
+                // Don't open gallery for Kanda Technologies
+                if (item.querySelector('h3')?.textContent === 'Kanda Technologies') {
+                    return;
+                }
                 e.preventDefault();
                 const projectName = item.querySelector('h3').textContent.toLowerCase().replace(/\s+/g, '-');
                 this.openGallery(projectName);
             });
         });
-    }
 
-    createModal() {
-        this.modal = document.createElement('div');
-        this.modal.className = 'portfolio-modal';
-        this.modal.innerHTML = `
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <button class="nav-btn prev-btn">&lt;</button>
-                <button class="nav-btn next-btn">&gt;</button>
-                <div class="modal-image-container">
-                    <img src="" alt="Portfolio Image">
-                </div>
-            </div>
-        `;
-
-        document.body.appendChild(this.modal);
-
-        // Add event listeners
+        // Add event listeners to modal elements
         this.modal.querySelector('.close-modal').addEventListener('click', () => this.closeGallery());
         this.modal.querySelector('.prev-btn').addEventListener('click', () => this.navigate(-1));
         this.modal.querySelector('.next-btn').addEventListener('click', () => this.navigate(1));
@@ -69,6 +53,12 @@ class PortfolioGallery {
             this.updateImage();
             this.modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            // Update modal title
+            const title = this.modal.querySelector('.modal-title');
+            title.textContent = projectName.split('-').map(word => 
+                word.charAt(0).toUpperCase() + word.slice(1)
+            ).join(' ');
         } catch (error) {
             console.error('Error loading gallery:', error);
         }

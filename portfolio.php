@@ -32,59 +32,56 @@ require_once 'config.php';
     <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
         <div class="container">
-            <h2>Our Work</h2>
-            <p class="section-description">Explore our latest projects and see how we've helped businesses transform their digital presence.</p>
-            
+            <h2>Our Portfolio</h2>
             <div class="portfolio-grid">
-                <!-- Kanda Technologies -->
+                <div class="portfolio-item">
+                    <img src="images/SNAP SALOON/OG OG.png" alt="Snap Salon">
+                    <div class="portfolio-overlay">
+                        <h3>Snap Salon</h3>
+                        <p>Mobile App</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/orgin art/OG OG.png" alt="Orgin Arts">
+                    <div class="portfolio-overlay">
+                        <h3>Orgin Arts</h3>
+                        <p>Web Development</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/live for others/OG OG.png" alt="Live For Others">
+                    <div class="portfolio-overlay">
+                        <h3>Live For Others</h3>
+                        <p>Nonprofit</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/GOLD PROFITER/OG OG.jpg" alt="Gold Profiter">
+                    <div class="portfolio-overlay">
+                        <h3>Gold Profiter</h3>
+                        <p>Finance</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/vivid drive/OG OG.png" alt="Vivid Drive">
+                    <div class="portfolio-overlay">
+                        <h3>Vivid Drive</h3>
+                        <p>Web Application</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
                 <div class="portfolio-item">
                     <div class="portfolio-overlay" style="background: rgba(0, 0, 0, 0.9);">
                         <h3>Kanda Technologies</h3>
                         <p>Insurance Technology Solutions</p>
-                        <div class="portfolio-buttons">
-                            <a href="https://kandaclaim.com" target="_blank" class="btn btn-primary">Kanda Claim</a>
-                            <a href="https://kandatech.com" target="_blank" class="btn btn-primary">Kanda Tech</a>
+                        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <a href="https://kandaclaim.com/" target="_blank" class="btn btn-primary">Kanda Claim</a>
+                            <a href="https://kandatechnologies.com/" target="_blank" class="btn btn-primary">Kanda Tech</a>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Snap Salons -->
-                <div class="portfolio-item">
-                    <img src="images/portfolio/snap-salons.jpg" alt="Snap Salons">
-                    <div class="portfolio-overlay">
-                        <h3>Snap Salons</h3>
-                        <p>Salon Management System</p>
-                        <a href="https://snapsalons.com" target="_blank" class="btn btn-primary">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Live For Others -->
-                <div class="portfolio-item">
-                    <img src="images/portfolio/live-for-others.jpg" alt="Live For Others">
-                    <div class="portfolio-overlay">
-                        <h3>Live For Others</h3>
-                        <p>Charity Management Platform</p>
-                        <a href="https://liveforothers.org" target="_blank" class="btn btn-primary">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Gold Profiters -->
-                <div class="portfolio-item">
-                    <img src="images/portfolio/gold-profiters.jpg" alt="Gold Profiters">
-                    <div class="portfolio-overlay">
-                        <h3>Gold Profiters</h3>
-                        <p>Investment Management System</p>
-                        <a href="https://goldprofiters.com" target="_blank" class="btn btn-primary">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Kigali Tech Website -->
-                <div class="portfolio-item">
-                    <img src="images/portfolio/kigali-tech.jpg" alt="Kigali Tech Website">
-                    <div class="portfolio-overlay">
-                        <h3>Kigali Tech Website</h3>
-                        <p>Company Website & Portfolio</p>
-                        <a href="https://kigalitech.com" target="_blank" class="btn btn-primary">View Project</a>
                     </div>
                 </div>
             </div>
@@ -132,6 +129,19 @@ require_once 'config.php';
         <i class="fas fa-comment-dots"></i>
     </div>
 
+    <!-- Portfolio Gallery Modal -->
+    <div class="portfolio-modal">
+        <div class="modal-content">
+            <div class="modal-title"></div>
+            <div class="close-modal">&times;</div>
+            <div class="modal-image-container">
+                <img src="" alt="">
+            </div>
+            <button class="nav-btn prev-btn">&lt;</button>
+            <button class="nav-btn next-btn">&gt;</button>
+        </div>
+    </div>
+
     <!-- Contact Popup -->
     <div class="contact-popup-overlay"></div>
     <div class="contact-popup">
@@ -156,5 +166,6 @@ require_once 'config.php';
     <?php include 'includes/footer.php'; ?>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/gallery.js"></script>
 </body>
 </html> 
