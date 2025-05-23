@@ -176,8 +176,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const isHomePage = window.location.pathname.endsWith('index.php') || window.location.pathname.endsWith('/');
     const isContactPage = window.location.pathname.includes('contact.php');
 
-    // Show popup on homepage after 5 seconds
-    if (isHomePage) {
+    // Add close button to popup if it doesn't exist
+    if (contactPopup && !contactPopup.querySelector('.contact-popup-close')) {
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'contact-popup-close';
+        closeBtn.setAttribute('aria-label', 'Close contact popup');
+        closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+        contactPopup.insertBefore(closeBtn, contactPopup.firstChild);
+
+        // Add close button functionality
+        closeBtn.addEventListener('click', () => {
+            contactPopup.classList.remove('active');
+            // Store in localStorage that user has closed the popup
+            localStorage.setItem('contactPopupClosed', 'true');
+        });
+    }
+
+    // Show popup on homepage after 5 seconds if not previously closed
+    if (isHomePage && !localStorage.getItem('contactPopupClosed')) {
         setTimeout(() => {
             if (contactPopup) {
                 contactPopup.classList.add('active');
@@ -199,8 +215,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Show popup on contact page after 5 seconds
-    if (isContactPage) {
+    // Show popup on contact page after 5 seconds if not previously closed
+    if (isContactPage && !localStorage.getItem('contactPopupClosed')) {
         setTimeout(() => {
             if (contactPopup) {
                 contactPopup.classList.add('active');
@@ -336,51 +352,4 @@ document.addEventListener('DOMContentLoaded', function() {
             window.open(url, '_blank');
         });
     });
-
-    // Contact Popup Functionality
-    function createContactPopup() {
-        const popup = document.createElement('div');
-        popup.className = 'contact-popup';
-        popup.innerHTML = `
-            <button class="contact-popup-close" aria-label="Close contact popup">
-                <i class="fas fa-times"></i>
-            </button>
-            <h3>Contact Us</h3>
-            <p>Need help? We're here for you!</p>
-            <div class="contact-popup-buttons">
-                <a href="tel:+1234567890" class="contact-popup-btn phone">
-                    <i class="fas fa-phone"></i>
-                    Call Us
-                </a>
-                <a href="https://wa.me/1234567890" class="contact-popup-btn whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                    WhatsApp
-                </a>
-                <a href="mailto:contact@example.com" class="contact-popup-btn email">
-                    <i class="fas fa-envelope"></i>
-                    Email Us
-                </a>
-            </div>
-        `;
-
-        document.body.appendChild(popup);
-
-        // Add close button functionality
-        const closeBtn = popup.querySelector('.contact-popup-close');
-        closeBtn.addEventListener('click', () => {
-            popup.classList.remove('active');
-            // Store in localStorage that user has closed the popup
-            localStorage.setItem('contactPopupClosed', 'true');
-        });
-
-        // Show popup after 5 seconds if not previously closed
-        if (!localStorage.getItem('contactPopupClosed')) {
-            setTimeout(() => {
-                popup.classList.add('active');
-            }, 5000);
-        }
-    }
-
-    // Initialize contact popup
-    createContactPopup();
 }); 
