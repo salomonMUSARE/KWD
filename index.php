@@ -258,55 +258,115 @@ require_once 'config.php';
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="contact-section" id="contact">
         <div class="container">
-            <h2>Get in Touch</h2>
-            <div class="contact-content">
+            <div class="contact-grid">
+                <!-- Left Side: Contact Information -->
                 <div class="contact-info">
-                    <div class="info-item" onclick="window.open('tel:+250782768846', '_blank')">
-                        <i class="fas fa-phone"></i>
-                        <h3>Phone</h3>
-                        <p>+250 782 768 846</p>
-                    </div>
-                    <div class="info-item" onclick="window.open('https://wa.me/250782768846?text=Hello%20Kigali%20website%20designers', '_blank')">
-                        <i class="fab fa-whatsapp"></i>
-                        <h3>WhatsApp</h3>
-                        <p>Chat with us</p>
-                    </div>
-                    <div class="info-item" onclick="window.open('mailto:salmonmusare@gmail.com', '_blank')">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>salmonmusare@gmail.com</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Address</h3>
-                        <p>Kigali Heights, KG 7 Ave, Kigali</p>
+                    <div class="contact-info-content">
+                        <h2>Get in Touch</h2>
+                        <p class="contact-intro">Have a project in mind? We'd love to hear from you. Choose your preferred way to reach us.</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Call Us</h3>
+                                    <a href="tel:+250782768846" target="_blank">+250 782 768 846</a>
+                                    <p>Available Monday to Friday, 9 AM - 5 PM</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>WhatsApp</h3>
+                                    <a href="https://wa.me/250782768846?text=Hello%20Kigali%20website%20designers" target="_blank">Chat with us</a>
+                                    <p>Quick responses during business hours</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Email</h3>
+                                    <a href="mailto:salmonmusare@gmail.com" target="_blank">salmonmusare@gmail.com</a>
+                                    <p>We'll respond within 24 hours</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Visit Us</h3>
+                                    <p>Kigali Heights, KG 7 Ave</p>
+                                    <p>Kigali, Rwanda</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-social">
+                            <h3>Follow Us</h3>
+                            <div class="social-links">
+                                <a href="#" target="_blank" class="social-link">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="#" target="_blank" class="social-link">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" target="_blank" class="social-link">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" target="_blank" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm" action="includes/process_contact.php" method="POST">
-                        <div class="form-group">
-                            <input type="text" name="name" id="name" placeholder=" " required>
-                            <label for="name">Your Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" id="email" placeholder=" " required>
-                            <label for="email">Your Email</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" name="phone" id="phone" placeholder=" " required>
-                            <label for="phone">Phone Number</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" id="message" placeholder=" " required></textarea>
-                            <label for="message">Your Message</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
+
+                <!-- Right Side: Contact Form -->
+                <div class="contact-form-container">
+                    <div class="form-wrapper">
+                        <h2>Send us a Message</h2>
+                        <p class="form-intro">Fill out the form below and we'll get back to you as soon as possible.</p>
+                        <form id="contactForm" class="contact-form" action="includes/process_contact.php" method="POST">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required placeholder="Your name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="Your email address">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone (Optional)</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required placeholder="What is this regarding?">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
