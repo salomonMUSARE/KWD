@@ -149,8 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (data.success) {
                     if (formSuccess && formSuccessOverlay) {
-                        formSuccess.classList.add('active');
-                        formSuccessOverlay.classList.add('active');
+                        formSuccess.style.display = 'block';
+                        formSuccessOverlay.style.display = 'block';
                     }
                     this.reset();
                 } else {
@@ -167,19 +167,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Close success message
+    // Close success message (OK button)
     if (closeBtn) {
         closeBtn.addEventListener('click', function() {
-            formSuccess.classList.remove('active');
-            formSuccessOverlay.classList.remove('active');
+            if (formSuccess && formSuccessOverlay) {
+                formSuccess.style.display = 'none';
+                formSuccessOverlay.style.display = 'none';
+            }
         });
     }
 
     // Close success message when clicking overlay
     if (formSuccessOverlay) {
         formSuccessOverlay.addEventListener('click', function() {
-            formSuccess.classList.remove('active');
-            this.classList.remove('active');
+            if (formSuccess) {
+                formSuccess.style.display = 'none';
+            }
+            this.style.display = 'none';
         });
     }
 

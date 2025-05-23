@@ -402,8 +402,8 @@ require_once 'config.php';
 
     <!-- Form Success Message and Overlay -->
     <div class="form-success" style="display:none;">
-        <span class="close-btn">&times;</span>
-        <p>Your message was sent successfully!</p>
+        <p style="font-size:1.5rem; font-weight:bold; margin-bottom:1rem;">Email successfully sent!</p>
+        <button class="close-btn" style="font-size:1.2rem; padding:0.75rem 2.5rem; background:#007bff; color:#fff; border:none; border-radius:6px; cursor:pointer;">OK</button>
     </div>
     <div class="form-success-overlay" style="display:none;"></div>
 
