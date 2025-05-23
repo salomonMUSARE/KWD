@@ -1,8 +1,10 @@
 <?php
 require_once '../config.php';
 
+// Define email recipient as a constant
+define('NOTIFICATION_EMAIL', 'salmonmusare@gmail.com');
+
 function sendEmailNotification($messages) {
-    $to = 'salmonmusare@gmail.com';
     $subject = 'New Contact Form Submissions - ' . date('Y-m-d H:i:s');
     
     $message = "<html><body>";
@@ -30,7 +32,7 @@ function sendEmailNotification($messages) {
         'X-Mailer: PHP/' . phpversion()
     ];
     
-    return mail($to, $subject, $message, implode("\r\n", $headers));
+    return mail(NOTIFICATION_EMAIL, $subject, $message, implode("\r\n", $headers));
 }
 
 try {
@@ -92,9 +94,9 @@ try {
             $pdo->commit();
             
             if ($emailSent) {
-                error_log("Successfully sent " . count($messages) . " messages to " . $to);
+                error_log("Successfully sent " . count($messages) . " messages to " . NOTIFICATION_EMAIL);
             } else {
-                error_log("Failed to send email notification");
+                error_log("Failed to send email notification to " . NOTIFICATION_EMAIL);
             }
             
         } catch (Exception $e) {

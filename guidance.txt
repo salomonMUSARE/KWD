@@ -1,0 +1,15 @@
+I was having issue with the databse connection wha ti did is below
+
+define('DB_HOST', '');
+define('DB_NAME', 'hzolzfmy_WPRDD');
+define('DB_USER', 'hzolzfmy_Dev101');  // Updated for hosting environment
+define('DB_PASS', ''); 
+
+
+so hotst is no local shit or anyhting, just emappty
+went to blue host , then hosting, then to my website, then cms installer, then cpanel icon in top on left side end of the the top righ t aligned icons
+
+
+then email accounts then i create noreply@mywebsite.com 
+
+now everything works when i run https://kigalidev.com/includes/send_notifications.php in my browser, boom,done!

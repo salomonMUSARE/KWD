@@ -26,8 +26,8 @@ require_once 'config.php';
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "KigaliTech",
-        "url": "https://kigalitech.vercel.app",
-        "logo": "https://kigalitech.vercel.app/images/logos/logo.png",
+        "url": "https://kigalidev.com",
+        "logo": "https://kigalidev.com/images/logos/logo.png",
         "description": "Leading web development and mobile app development company in Rwanda. Transform your business with our innovative digital solutions.",
         "address": {
             "@type": "PostalAddress",
@@ -39,11 +39,13 @@ require_once 'config.php';
             "@type": "ContactPoint",
             "telephone": "+250782768846",
             "contactType": "customer service",
-            "email": "salmonmusare@gmail.com",
-            "availableLanguage": ["English"]
+            "areaServed": "RW",
+            "availableLanguage": ["English", "French", "Kinyarwanda"]
         },
         "sameAs": [
-            "https://wa.me/250782768846"
+            "https://facebook.com/kigalitech",
+            "https://twitter.com/kigalitech",
+            "https://linkedin.com/company/kigalitech"
         ]
     }
     </script>
@@ -54,7 +56,7 @@ require_once 'config.php';
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "KigaliTech",
-        "image": "https://kigalitech.vercel.app/images/logos/logo.png",
+        "image": "https://kigalidev.com/images/logos/logo.png",
         "description": "Expert web development, mobile app development, and software solutions in Rwanda.",
         "address": {
             "@type": "PostalAddress",
@@ -67,7 +69,7 @@ require_once 'config.php';
             "latitude": -1.9536,
             "longitude": 30.0582
         },
-        "url": "https://kigalitech.vercel.app",
+        "url": "https://kigalidev.com",
         "telephone": "+250782768846",
         "priceRange": "$$",
         "openingHoursSpecification": {
@@ -84,6 +86,11 @@ require_once 'config.php';
         }
     }
     </script>
+
+    <meta property="og:title" content="KigaliTech - Web & Mobile App Development in Rwanda">
+    <meta property="og:description" content="Professional web and mobile app development services in Kigali, Rwanda. We build custom software solutions for businesses.">
+    <meta property="og:image" content="https://kigalidev.com/images/logos/logo.png">
+    <meta property="og:url" content="https://kigalidev.com">
 </head>
 <body>
     <?php include 'includes/header.php'; ?>

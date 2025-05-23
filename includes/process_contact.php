@@ -40,12 +40,12 @@ try {
         }
     }
 
-    // Sanitize input
-    $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $phone = filter_var($_POST['phone'] ?? '', FILTER_SANITIZE_STRING);
-    $subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
-    $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
+    // Sanitize input using modern methods
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? '';
+    $subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -66,7 +66,7 @@ try {
         );
     } catch (PDOException $e) {
         error_log("Database connection failed: " . $e->getMessage());
-        throw new Exception('Database connection failed');
+        throw new Exception('Database connection failed: ' . $e->getMessage());
     }
 
     // Insert into database
@@ -83,20 +83,23 @@ try {
             ':subject' => $subject,
             ':message' => $message
         ]);
+
+        // Send success response
+        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            echo json_encode([
+                'success' => true,
+                'message' => 'Message sent successfully'
+            ]);
+        } else {
+            $_SESSION['success'] = 'Message sent successfully';
+            header("Location: " . $_SERVER['HTTP_REFERER']);
+        }
+        exit;
+
     } catch (PDOException $e) {
         error_log("Database insert failed: " . $e->getMessage());
-        throw new Exception('Failed to save message');
+        throw new Exception('Failed to save message: ' . $e->getMessage());
     }
-
-    // Optionally include notification script
-    // include_once 'send_notifications.php';
-
-    // Send success response
-    echo json_encode([
-        'success' => true,
-        'message' => 'Message sent successfully'
-    ]);
-    exit;
 
 } catch (Exception $e) {
     error_log("Contact form error: " . $e->getMessage());
@@ -107,11 +110,10 @@ try {
             'success' => false,
             'message' => $e->getMessage()
         ]);
-        exit;
     } else {
         $_SESSION['error'] = $e->getMessage();
         header("Location: " . $_SERVER['HTTP_REFERER']);
-        exit;
     }
+    exit;
 }
 ?> 

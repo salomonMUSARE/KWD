@@ -13,4 +13,4 @@ Disallow: /includes/
 Disallow: /config.php
 Disallow: /process_contact.php
 
-Sitemap: https://kigalitech.vercel.app/sitemap.xml 
+Sitemap: https://kigalidev.com/sitemap.xml 

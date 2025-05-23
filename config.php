@@ -1,14 +1,14 @@
 <?php
 // Site Configuration
 define('SITE_NAME', 'KigaliTech');
-define('SITE_URL', 'https://kigalitech.vercel.app');
+define('SITE_URL', 'https://kigalidev.com');
 define('ADMIN_EMAIL', 'salmonmusare@gmail.com');
 
-// Database Configuration (if needed in the future)
-define('DB_HOST', 'localhost');
+// Database Configuration
+define('DB_HOST', '');
 define('DB_NAME', 'hzolzfmy_WPRDD');
-define('DB_USER', 'root');
-define('DB_PASS', 'Business@me1'); 
+define('DB_USER', 'hzolzfmy_Dev101');  // Updated for hosting environment
+define('DB_PASS', 'Dev@me11'); 
 
 // Contact Information
 define('CONTACT_PHONE', '+250 782 768 846');
@@ -100,5 +100,4 @@ function get_flash_message() {
 }
 
 // Initialize Session
-start_secure_session();
-?> 
+start_secure_session(); 
