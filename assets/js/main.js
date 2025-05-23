@@ -12,15 +12,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function toggleMenu() {
+        const isOpen = mainNav.classList.contains('active');
+        
+        // Toggle classes
         mobileMenuToggle.classList.toggle('active');
         mainNav.classList.toggle('active');
         mobileMenuOverlay.classList.toggle('active');
-        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isOpen ? '' : 'hidden';
+        
+        // Add/remove aria-expanded attribute
+        mobileMenuToggle.setAttribute('aria-expanded', !isOpen);
     }
     
     if (mobileMenuToggle && mainNav) {
         // Toggle menu when clicking the button
-        mobileMenuToggle.addEventListener('click', toggleMenu);
+        mobileMenuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
         
         // Close menu when clicking overlay
         mobileMenuOverlay.addEventListener('click', toggleMenu);
@@ -37,6 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close menu when pressing Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mainNav.classList.contains('active') && 
+                !mainNav.contains(e.target) && 
+                !mobileMenuToggle.contains(e.target)) {
                 toggleMenu();
             }
         });
@@ -316,4 +336,51 @@ document.addEventListener('DOMContentLoaded', function() {
             window.open(url, '_blank');
         });
     });
+
+    // Contact Popup Functionality
+    function createContactPopup() {
+        const popup = document.createElement('div');
+        popup.className = 'contact-popup';
+        popup.innerHTML = `
+            <button class="contact-popup-close" aria-label="Close contact popup">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3>Contact Us</h3>
+            <p>Need help? We're here for you!</p>
+            <div class="contact-popup-buttons">
+                <a href="tel:+1234567890" class="contact-popup-btn phone">
+                    <i class="fas fa-phone"></i>
+                    Call Us
+                </a>
+                <a href="https://wa.me/1234567890" class="contact-popup-btn whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                <a href="mailto:contact@example.com" class="contact-popup-btn email">
+                    <i class="fas fa-envelope"></i>
+                    Email Us
+                </a>
+            </div>
+        `;
+
+        document.body.appendChild(popup);
+
+        // Add close button functionality
+        const closeBtn = popup.querySelector('.contact-popup-close');
+        closeBtn.addEventListener('click', () => {
+            popup.classList.remove('active');
+            // Store in localStorage that user has closed the popup
+            localStorage.setItem('contactPopupClosed', 'true');
+        });
+
+        // Show popup after 5 seconds if not previously closed
+        if (!localStorage.getItem('contactPopupClosed')) {
+            setTimeout(() => {
+                popup.classList.add('active');
+            }, 5000);
+        }
+    }
+
+    // Initialize contact popup
+    createContactPopup();
 }); 

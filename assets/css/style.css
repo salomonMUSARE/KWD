@@ -792,6 +792,7 @@ body {
     cursor: pointer;
     padding: 0.5rem;
     z-index: 1001;
+    margin-left: auto;
 }
 
 .mobile-menu-toggle span {
@@ -807,6 +808,8 @@ body {
 @media (max-width: 992px) {
     .mobile-menu-toggle {
         display: block;
+        position: relative;
+        z-index: 1001;
     }
 
     .main-nav {
@@ -820,6 +823,7 @@ body {
         box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
         transition: right 0.3s ease;
         z-index: 1000;
+        overflow-y: auto;
     }
 
     .main-nav.active {
@@ -834,19 +838,43 @@ body {
     .main-nav a {
         display: block;
         font-size: 1.1rem;
+        padding: 0.75rem 0;
+    }
+
+    .main-nav a::after {
+        display: none;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+        color: var(--primary-color);
+        background: var(--light-background);
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
     }
 
     /* Hamburger Menu Animation */
+    .mobile-menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background: var(--text-color);
+        margin: 5px 0;
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+
     .mobile-menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: translateY(7px) rotate(45deg);
     }
 
     .mobile-menu-toggle.active span:nth-child(2) {
         opacity: 0;
+        transform: scale(0);
     }
 
     .mobile-menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
+        transform: translateY(-7px) rotate(-45deg);
     }
 
     /* Overlay when menu is open */
@@ -859,10 +887,27 @@ body {
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
         z-index: 999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
 
     .mobile-menu-overlay.active {
         display: block;
+        opacity: 1;
+    }
+
+    /* Hide header buttons on mobile */
+    .header-buttons {
+        display: none;
+    }
+
+    /* Adjust header content for mobile */
+    .header-content {
+        padding: 0.75rem 0;
+    }
+
+    .logo img {
+        height: 35px;
     }
 }
 
@@ -1524,4 +1569,57 @@ section h3 {
     .terms-hero h1 {
         font-size: 2.5rem;
     }
+}
+
+/* Contact Popup Styles */
+.contact-popup {
+    position: fixed;
+    bottom: 5rem;
+    right: 2rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    width: 300px;
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.contact-popup.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.contact-popup-close {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-text);
+    transition: color 0.3s ease;
+}
+
+.contact-popup-close:hover {
+    color: var(--text-color);
+}
+
+.contact-popup-close i {
+    font-size: 1.25rem;
+}
+
+.contact-popup h3 {
+    padding-right: 1.5rem;
+    margin-bottom: 0.5rem;
 } 
