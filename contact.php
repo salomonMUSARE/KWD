@@ -128,30 +128,30 @@ require_once 'config.php';
                     <div class="form-wrapper">
                         <h2>Send us a Message</h2>
                         <p class="form-intro">Fill out the form below and we'll get back to you as soon as possible.</p>
-                        <form id="contactForm" class="contact-form" action="process_contact.php" method="POST">
+                        <form id="contactForm" class="contact-form" action="includes/process_contact.php" method="POST">
                             <div class="form-group">
+                                <input type="text" id="name" name="name" required placeholder=" ">
                                 <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required placeholder="Your name">
                             </div>
                             
                             <div class="form-group">
+                                <input type="email" id="email" name="email" required placeholder=" ">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required placeholder="Your email address">
                             </div>
                             
                             <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder=" ">
                                 <label for="phone">Phone (Optional)</label>
-                                <input type="tel" id="phone" name="phone" placeholder="Your phone number">
                             </div>
                             
                             <div class="form-group">
+                                <input type="text" id="subject" name="subject" required placeholder=" ">
                                 <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required placeholder="What is this regarding?">
                             </div>
                             
                             <div class="form-group">
+                                <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
                                 <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project..."></textarea>
                             </div>
                             
                             <button type="submit" class="btn btn-primary">Send Message</button>
