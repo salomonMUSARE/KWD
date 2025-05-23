@@ -1423,4 +1423,109 @@ section h3 {
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
+}
+
+/* Privacy Policy and Terms Pages */
+.privacy-content,
+.terms-content {
+    padding: 4rem 0;
+    background: var(--light-background);
+}
+
+.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper h2 {
+    color: var(--text-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.last-updated {
+    color: var(--light-text);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.policy-section,
+.terms-section {
+    margin-bottom: 2rem;
+}
+
+.policy-section h3,
+.terms-section h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.policy-section p,
+.terms-section p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.policy-section ul,
+.terms-section ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.policy-section li,
+.terms-section li {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.privacy-hero,
+.terms-hero {
+    background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(37, 99, 235, 0.8)), url('../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 6rem 0;
+}
+
+.privacy-hero h1,
+.terms-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.privacy-hero p,
+.terms-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 2rem;
+        margin: 0 1rem;
+    }
+
+    .content-wrapper h2 {
+        font-size: 1.75rem;
+    }
+
+    .policy-section h3,
+    .terms-section h3 {
+        font-size: 1.25rem;
+    }
+
+    .privacy-hero h1,
+    .terms-hero h1 {
+        font-size: 2.5rem;
+    }
 } 

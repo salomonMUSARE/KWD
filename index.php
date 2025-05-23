@@ -6,7 +6,7 @@ require_once 'config.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KigaliTech - Innovative Solutions for the Digital Age</title>
+    <?php include 'includes/meta.php'; ?>
     
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
@@ -19,6 +19,71 @@ require_once 'config.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Structured Data for Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "KigaliTech",
+        "url": "https://kigalitech.vercel.app",
+        "logo": "https://kigalitech.vercel.app/images/logos/logo.png",
+        "description": "Leading web development and mobile app development company in Rwanda. Transform your business with our innovative digital solutions.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Kigali Heights, KG 7 Ave",
+            "addressLocality": "Kigali",
+            "addressCountry": "RW"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+250782768846",
+            "contactType": "customer service",
+            "email": "salmonmusare@gmail.com",
+            "availableLanguage": ["English"]
+        },
+        "sameAs": [
+            "https://wa.me/250782768846"
+        ]
+    }
+    </script>
+
+    <!-- Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "KigaliTech",
+        "image": "https://kigalitech.vercel.app/images/logos/logo.png",
+        "description": "Expert web development, mobile app development, and software solutions in Rwanda.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Kigali Heights, KG 7 Ave",
+            "addressLocality": "Kigali",
+            "addressCountry": "RW"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -1.9536,
+            "longitude": 30.0582
+        },
+        "url": "https://kigalitech.vercel.app",
+        "telephone": "+250782768846",
+        "priceRange": "$$",
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+        }
+    }
+    </script>
 </head>
 <body>
     <?php include 'includes/header.php'; ?>
