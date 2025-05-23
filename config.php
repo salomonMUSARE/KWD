@@ -6,7 +6,7 @@ define('ADMIN_EMAIL', 'salmonmusare@gmail.com');
 
 // Database Configuration (if needed in the future)
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'kwp_db');
+define('DB_NAME', 'hzolzfmy_WPRDD');
 define('DB_USER', 'root');
 define('DB_PASS', 'Business@me1'); 
 

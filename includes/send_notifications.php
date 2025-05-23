@@ -15,6 +15,7 @@ function sendEmailNotification($messages) {
         $message .= "<p><strong>Name:</strong> " . htmlspecialchars($msg['name']) . "</p>";
         $message .= "<p><strong>Email:</strong> " . htmlspecialchars($msg['email']) . "</p>";
         $message .= "<p><strong>Phone:</strong> " . htmlspecialchars($msg['phone']) . "</p>";
+        $message .= "<p><strong>Subject:</strong> " . htmlspecialchars($msg['subject']) . "</p>";
         $message .= "<p><strong>Message:</strong><br>" . nl2br(htmlspecialchars($msg['message'])) . "</p>";
         $message .= "</div>";
     }
@@ -55,19 +56,51 @@ try {
     $messages = $stmt->fetchAll();
     
     if (!empty($messages)) {
-        // Send email with all messages
-        if (sendEmailNotification($messages)) {
-            // Update status for all sent messages
-            $stmt = $pdo->prepare("
-                UPDATE contact_messages 
-                SET email_notification_status = 2 
-                WHERE email_notification_status = 1
-            ");
-            $stmt->execute();
+        // Start transaction
+        $pdo->beginTransaction();
+        
+        try {
+            // Send email with all messages
+            $emailSent = sendEmailNotification($messages);
             
-            error_log("Successfully sent " . count($messages) . " messages to " . $to);
-        } else {
-            error_log("Failed to send email notification");
+            // Log notification attempt for each message
+            foreach ($messages as $msg) {
+                $logStmt = $pdo->prepare("
+                    INSERT INTO notification_logs (contact_message_id, status)
+                    VALUES (:message_id, :status)
+                ");
+                
+                $logStmt->execute([
+                    ':message_id' => $msg['id'],
+                    ':status' => $emailSent ? 'sent' : 'failed'
+                ]);
+                
+                // Update message status
+                $updateStmt = $pdo->prepare("
+                    UPDATE contact_messages 
+                    SET email_notification_status = :status 
+                    WHERE id = :id
+                ");
+                
+                $updateStmt->execute([
+                    ':status' => $emailSent ? 2 : 1, // 2 = sent, 1 = not sent
+                    ':id' => $msg['id']
+                ]);
+            }
+            
+            // Commit transaction
+            $pdo->commit();
+            
+            if ($emailSent) {
+                error_log("Successfully sent " . count($messages) . " messages to " . $to);
+            } else {
+                error_log("Failed to send email notification");
+            }
+            
+        } catch (Exception $e) {
+            // Rollback transaction on error
+            $pdo->rollBack();
+            throw $e;
         }
     }
     

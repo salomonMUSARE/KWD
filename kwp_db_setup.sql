@@ -1,10 +1,10 @@
--- 1. Create the database (change the name if you want)
-CREATE DATABASE IF NOT EXISTS kwp_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE kwp_db;
+-- 1. Create the specified database and switch to it
+CREATE DATABASE IF NOT EXISTS hzolzfmy_WPRDD CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE hzolzfmy_WPRDD;
 
--- 2. (Optional) Create a user and grant privileges (edit username/password as needed)
+-- 2. (Optional) Create a user and grant privileges
 -- CREATE USER 'kwp_user'@'localhost' IDENTIFIED BY 'your_strong_password';
--- GRANT ALL PRIVILEGES ON kwp_db.* TO 'kwp_user'@'localhost';
+-- GRANT ALL PRIVILEGES ON hzolzfmy_WPRDD.* TO 'kwp_user'@'localhost';
 -- FLUSH PRIVILEGES;
 
 -- 3. Create the contact_messages table
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `contact_messages` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 4. (Optional) Table for logging notification events
+-- 4. Create the notification_logs table
 CREATE TABLE IF NOT EXISTS `notification_logs` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `contact_message_id` INT UNSIGNED NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `notification_logs` (
     FOREIGN KEY (`contact_message_id`) REFERENCES `contact_messages`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 5. (Optional) Table for admin users (if you want to expand later)
+-- 5. (Optional) Create the admin_users table
 -- CREATE TABLE IF NOT EXISTS `admin_users` (
 --     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 --     `username` VARCHAR(50) NOT NULL UNIQUE,
@@ -38,4 +38,4 @@ CREATE TABLE IF NOT EXISTS `notification_logs` (
 --     `email` VARCHAR(150) NOT NULL,
 --     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 --     PRIMARY KEY (`id`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
