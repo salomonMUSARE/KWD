@@ -2,7 +2,11 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-brand">
-                <img src="images/logos/logo.png" alt="KigaliTech Logo - Leading Web & Mobile App Development Company in Rwanda" class="footer-logo">
+                <div class="footer-logo-container">
+                    <a href="<?php echo SITE_URL; ?>">
+                        <img src="<?php echo SITE_URL; ?>/images/logos/logo.png" alt="KigaliTech Logo - Leading Web & Mobile App Development Company in Rwanda" class="footer-logo" width="150" height="50">
+                    </a>
+                </div>
                 <p>Building creative and technical solutions from Kigali Heights. Expert in websites, mobile apps, and desktop software development. Your trusted partner for digital transformation in Rwanda.</p>
             </div>
             

@@ -37,37 +37,47 @@ switch ($current_page) {
         $page_description = 'Leading web development and mobile app development company in Rwanda. Transform your business with our innovative digital solutions.';
         $page_keywords = 'web development Rwanda, mobile app development Kigali, software development Rwanda, website design, app developers';
 }
+
+// Get the current page title
+$page_title = isset($page_title) ? $page_title . ' - ' . SITE_NAME : SITE_NAME;
+$page_description = isset($page_description) ? $page_description : 'Leading web development and mobile app development company in Rwanda. Transform your business with our innovative digital solutions.';
+$current_url = SITE_URL . $_SERVER['REQUEST_URI'];
+$logo_url = SITE_URL . '/images/logos/logo.png';
 ?>
 
 <!-- Primary Meta Tags -->
 <title><?php echo $page_title; ?></title>
 <meta name="title" content="<?php echo $page_title; ?>">
 <meta name="description" content="<?php echo $page_description; ?>">
-<meta name="keywords" content="<?php echo $page_keywords; ?>">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="<?php echo SITE_URL . '/' . $current_page . '.php'; ?>">
+<meta property="og:url" content="<?php echo $current_url; ?>">
 <meta property="og:title" content="<?php echo $page_title; ?>">
 <meta property="og:description" content="<?php echo $page_description; ?>">
-<meta property="og:image" content="<?php echo SITE_URL; ?>/images/logos/logo.png">
+<meta property="og:image" content="<?php echo $logo_url; ?>">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="<?php echo SITE_NAME; ?>">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="<?php echo SITE_URL . '/' . $current_page . '.php'; ?>">
+<meta property="twitter:url" content="<?php echo $current_url; ?>">
 <meta property="twitter:title" content="<?php echo $page_title; ?>">
 <meta property="twitter:description" content="<?php echo $page_description; ?>">
-<meta property="twitter:image" content="<?php echo SITE_URL; ?>/images/logos/logo.png">
+<meta property="twitter:image" content="<?php echo $logo_url; ?>">
+
+<!-- WhatsApp -->
+<meta property="og:image:secure_url" content="<?php echo $logo_url; ?>">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="<?php echo SITE_NAME; ?> Logo">
 
 <!-- Additional Meta Tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <meta name="language" content="English">
 <meta name="revisit-after" content="7 days">
-<meta name="author" content="KigaliTech">
-<meta name="geo.region" content="RW">
-<meta name="geo.placename" content="Kigali">
-<meta name="geo.position" content="-1.9536;30.0582">
-<meta name="ICBM" content="-1.9536, 30.0582">
+<meta name="author" content="<?php echo SITE_NAME; ?>">
 
 <!-- Canonical URL -->
 <link rel="canonical" href="<?php echo SITE_URL . '/' . $current_page . '.php'; ?>"> 

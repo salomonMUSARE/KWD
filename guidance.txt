@@ -13,3 +13,28 @@ went to blue host , then hosting, then to my website, then cms installer, then c
 then email accounts then i create noreply@mywebsite.com 
 
 now everything works when i run https://kigalidev.com/includes/send_notifications.php in my browser, boom,done!
+
+
+below is the sftp.json in .vsscode
+
+restart cursor , open the file from .vscode directory, win+shit+p then sftp then hit oncifg
+do again then maybe sync local to remote (for syncing all differing files to the website above there
+
+
+use format as below
+{
+    "name": "digalidev",
+    "host": "ftp.hzo.lzf.mybluehost.me",
+    "protocol": "ftp",
+    "port": 21,
+    "username": "dev3@kigalidev.com",
+    "password": "password",
+    "remotePath": "/public_html/website_671725b9",
+    "uploadOnSave": true,
+    "useTempFile": false,
+    "openSsh": false
+  }
+  
+
+to create the dev3 we had to go to ftp account in cpanel and creat this, while making it make the   Directory input empy, they auto fill like 
+kigalidev.com/sdfsdf but delete it and leave some default uneditable material on the left
